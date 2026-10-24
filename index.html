@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radha Rani Shringhar Kendra | Sacred Deity Couture</title>
+  <meta name="description" content="Shop handcrafted Laddu Gopal poshak, Radha Rani shringar, mukuts, and malas. Created with devotional sanctity by master karigars in Vrindavan Dham.">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. TOP BAR (MAROON)
+       ========================================================================= -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="3" width="15" height="13"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        <span>Celebrate Every Divine Moment | Explore Our Latest Collection</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="#track" onclick="openCheckoutModal()">Track Order</a>
+        <span>|</span>
+        <a href="#help" onclick="openSizeGuideModal('gopal')">Help</a>
+        <span>|</span>
+        <select id="currency-select" class="currency-dropdown">
+          <option value="INR" selected>INR ₹ ▾</option>
+          <option value="USD">USD $ ▾</option>
+          <option value="GBP">GBP £ ▾</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN SITE HEADER (CLIENT LOGO, SEARCH BAR, USER ACTIONS)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="header-main">
+      <div class="container header-main-inner">
+        
+        <!-- Official Client Logo -->
+        <a href="#" class="brand-logo-wrap" title="Radha Rani Shringhar Kendra">
+          <img src="assets/images/client-logo.png" alt="Radha Rani Shringhar Kendra Logo" class="client-logo-img" />
+        </a>
+
+        <!-- Search Bar -->
+        <div class="header-search-wrap">
+          <form class="search-box-form" onsubmit="event.preventDefault(); openSearchModal();">
+            <input type="text" 
+                   id="header-search-input" 
+                   class="search-box-input" 
+                   placeholder="Search for poshak, jewellery, mukut, mala..." 
+                   autocomplete="off" 
+                   onclick="openSearchModal()" />
+            <button type="submit" class="search-box-btn" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right User Actions -->
+        <div class="header-actions">
+          
+          <button class="action-item" onclick="showToast('Devotee Account Profile: Guest Devotee');">
+            <div class="action-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span>Account</span>
+          </button>
+
+          <button class="action-item" onclick="openWishlistModal()">
+            <div class="action-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span class="badge-counter wishlist-count-badge" style="display: none;">0</span>
+            </div>
+            <span>Wishlist</span>
+          </button>
+
+          <button class="action-item" onclick="openCartDrawer()">
+            <div class="action-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span class="badge-counter cart-count-badge">0</span>
+            </div>
+            <span>Cart</span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         3. HORIZONTAL NAVIGATION MENU BAR
+         ======================================================================= -->
+    <nav class="nav-bar">
+      <div class="container nav-inner">
+        <a href="#" class="nav-item active">Home</a>
+        <a href="#categories" class="nav-item" onclick="filterByCategory('laddu-gopal')">
+          Laddu Gopal Poshak
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </a>
+        <a href="#categories" class="nav-item" onclick="filterByCategory('radha-rani')">
+          Radha Rani Shringar
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </a>
+        <a href="#categories" class="nav-item" onclick="filterByCategory('mukut')">
+          Mukut & Jewellery
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </a>
+        <a href="#categories" class="nav-item" onclick="filterByCategory('mala')">
+          Mala & Accessories
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </a>
+        <a href="#categories" class="nav-item" onclick="filterByCategory('sets')">Complete Sets</a>
+        <a href="#festive" class="nav-item" onclick="filterByCategory('festive')">Festive Collection</a>
+        <a href="#festive" class="nav-item">
+          Offers ✦ <span class="tag-new-pill">New</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =========================================================================
+       4. HERO BANNER SECTION (DIVINE ELEGANCE FOR EVERY SACRED MOMENT)
+       ========================================================================= -->
+  <section class="hero-banner-wrap">
+    <div class="container">
+      <div class="hero-banner-container">
+        
+        <!-- Left Text Pane -->
+        <div class="hero-text-pane">
+          <span class="hero-eyebrow">D I V I N E &nbsp; C O L L E C T I O N S</span>
+          
+          <h1 class="hero-heading">
+            Divine Elegance for Every Sacred Moment
+          </h1>
+
+          <p class="hero-description">
+            Beautiful poshak, shringar and accessories for Laddu Gopal, Radha Rani and your beloved Thakur Ji.
+          </p>
+
+          <div class="hero-buttons-row">
+            <a href="#bestsellers" class="btn-hero-primary">
+              <span>Explore Collection</span>
+              <span>→</span>
+            </a>
+            <button class="btn-hero-secondary" onclick="openSizeGuideModal('gopal')">
+              Discover Shringar Sets
+            </button>
+          </div>
+
+          <!-- 3 Inline Trust Badges Matching Mockup -->
+          <div class="hero-trust-badges">
+            <div class="hero-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8 6 4 10 4 14a8 8 0 0 0 16 0c0-4-4-8-8-12z"></path>
+              </svg>
+              <span>Carefully Curated Collections</span>
+            </div>
+
+            <div class="hero-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="6 3 18 3 22 9 12 22 2 9 6 3"></polygon>
+              </svg>
+              <span>Premium Quality Designs</span>
+            </div>
+
+            <div class="hero-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+              </svg>
+              <span>Made for Every Divine Occasion</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Deity Photography Pane (New 8K Studio Generated Photograph) -->
+        <div class="hero-image-pane">
+          <img src="assets/images/hero-deity.jpg" alt="Divine Radha Krishna Deity Shringar" class="hero-deity-photo" />
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="hero-carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. "SHOP BY CATEGORY" SECTION (6 HIGH-RES CARDS)
+       ========================================================================= -->
+  <section class="category-section" id="categories">
+    <div class="container">
+      
+      <div class="section-title-row">
+        <div class="section-title-left">
+          <svg class="section-icon-flower" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.5 5 6 8.5 6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-10z"/>
+          </svg>
+          <h2 class="section-heading-serif">Shop by Category</h2>
+        </div>
+        <a href="#bestsellers" class="section-view-all-link">
+          View All Categories →
+        </a>
+      </div>
+
+      <!-- 6 Category Cards Grid -->
+      <div class="category-cards-grid">
+        
+        <!-- Card 1: Laddu Gopal Poshak -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Laddu Gopal Poshak')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-gopal.jpg" alt="Laddu Gopal Poshak" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Laddu Gopal Poshak</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+        <!-- Card 2: Radha Rani Shringar -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Radha Rani Shringar')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-radha.jpg" alt="Radha Rani Shringar" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Radha Rani Shringar</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+        <!-- Card 3: Mukut & Jewellery -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Mukut & Jewellery')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-mukut.jpg" alt="Mukut & Jewellery" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Mukut & Jewellery</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+        <!-- Card 4: Mala & Accessories -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Mala & Accessories')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-mala.jpg" alt="Mala & Accessories" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Mala & Accessories</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+        <!-- Card 5: Complete Shringar Sets -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Complete Shringar Sets')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-sets.jpg" alt="Complete Shringar Sets" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Complete Shringar Sets</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+        <!-- Card 6: Festive Collection -->
+        <a href="#bestsellers" class="cat-item-card" onclick="openCategory('Festive Collection')">
+          <div class="cat-thumb-wrap">
+            <img src="assets/images/cat-festive.jpg" alt="Festive Collection" loading="lazy" />
+          </div>
+          <div class="cat-info-row">
+            <span class="cat-name">Festive Collection</span>
+            <span class="cat-arrow-btn">›</span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. KANHA JI DARSHAN & POSHAK (HOVER CURSOR TO VIEW STANDALONE DRESS)
+       ========================================================================= -->
+  <section class="darshan-section" id="darshan-collection">
+    <div class="container">
+      
+      <div class="section-title-row darshan-header">
+        <div class="bestseller-header-left">
+          <div class="section-title-left">
+            <svg class="section-icon-flower" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.5 5 6 8.5 6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-10z"/>
+            </svg>
+            <h2 class="section-heading-serif">Thakurji Darshan & Poshak Collection</h2>
+          </div>
+          <span class="bestseller-subtitle">Hover over any card to view the standalone dress</span>
+        </div>
+        <a href="#darshan-collection" class="section-view-all-link">
+          Explore All Sizes (0–6 no) →
+        </a>
+      </div>
+
+      <div class="darshan-grid">
+        
+        <!-- Product 1: Shubh Shakti Laddu Gopal Dress -->
+        <article class="darshan-card">
+          <div class="darshan-size-bar">
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '3 no')">3 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '4 no')">4 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '5 no')">5 no</button>
+            <button class="size-pill-btn active" onclick="selectDarshanSize(this, '6 no')">6 no</button>
+          </div>
+
+          <button class="btn-darshan-cart" onclick="addDarshanItemToCart('Shubh Shakti Laddu Gopal Dress', 1160, 'assets/images/deity-purple.png', this)">
+            Add to Cart
+          </button>
+
+          <!-- Dual-Image Container with Seamless Hover Transition -->
+          <div class="darshan-media-wrap">
+            <span class="ribbon-badge-top">NEW IN</span>
+            <img src="assets/images/deity-purple.png" alt="Kanha Ji wearing Shubh Shakti Dress" class="img-kanhaji-deity" />
+            <img src="assets/images/dress-purple.png" alt="Shubh Shakti Dress Only" class="img-dress-only" />
+            <span class="hover-mode-indicator">Hover: Dress Only View</span>
+          </div>
+
+          <div class="darshan-info">
+            <h3 class="darshan-title" onclick="openProductQuickView('prod-1')">Shubh Shakti Laddu Gopal Dress</h3>
+            <span class="darshan-brand">RADHA RANI SHRINGHAR</span>
+            <div class="darshan-stars">★★★★★</div>
+            <div class="darshan-price-row">
+              <span class="darshan-mrp">Rs. 1,700.00</span>
+              <span class="darshan-from-price">From Rs. 1,160.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2: Mangalmayi Shakti Laddu Gopal Dress -->
+        <article class="darshan-card">
+          <div class="darshan-size-bar">
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '3 no')">3 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '4 no')">4 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '5 no')">5 no</button>
+            <button class="size-pill-btn active" onclick="selectDarshanSize(this, '6 no')">6 no</button>
+          </div>
+
+          <button class="btn-darshan-cart" onclick="addDarshanItemToCart('Mangalmayi Shakti Laddu Gopal Dress', 1375, 'assets/images/deity-maroon.png', this)">
+            Add to Cart
+          </button>
+
+          <div class="darshan-media-wrap">
+            <span class="ribbon-badge-top">NEW IN</span>
+            <img src="assets/images/deity-maroon.png" alt="Kanha Ji wearing Mangalmayi Shakti Dress" class="img-kanhaji-deity" />
+            <img src="assets/images/dress-maroon.png" alt="Mangalmayi Shakti Dress Only" class="img-dress-only" />
+            <span class="hover-mode-indicator">Hover: Dress Only View</span>
+          </div>
+
+          <div class="darshan-info">
+            <h3 class="darshan-title" onclick="openProductQuickView('prod-1')">Mangalmayi Shakti Laddu Gopal Dress</h3>
+            <span class="darshan-brand">RADHA RANI SHRINGHAR</span>
+            <div class="darshan-stars">★★★★★</div>
+            <div class="darshan-price-row">
+              <span class="darshan-mrp">Rs. 2,000.00</span>
+              <span class="darshan-from-price">From Rs. 1,375.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3: Nandanraj Laddu Gopal Dress -->
+        <article class="darshan-card">
+          <div class="darshan-size-bar">
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '3 no')">3 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '4 no')">4 no</button>
+            <button class="size-pill-btn active" onclick="selectDarshanSize(this, '5 no')">5 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '6 no')">6 no</button>
+          </div>
+
+          <button class="btn-darshan-cart" onclick="addDarshanItemToCart('Nandanraj Laddu Gopal Dress', 940, 'assets/images/deity-orange.png', this)">
+            Add to Cart
+          </button>
+
+          <div class="darshan-media-wrap">
+            <span class="ribbon-badge-top bestseller">BESTSELLER</span>
+            <img src="assets/images/deity-orange.png" alt="Kanha Ji wearing Nandanraj Dress" class="img-kanhaji-deity" />
+            <img src="assets/images/dress-orange.png" alt="Nandanraj Dress Only" class="img-dress-only" />
+            <span class="hover-mode-indicator">Hover: Dress Only View</span>
+          </div>
+
+          <div class="darshan-info">
+            <h3 class="darshan-title" onclick="openProductQuickView('prod-1')">Nandanraj Laddu Gopal Dress</h3>
+            <span class="darshan-brand">RADHA RANI SHRINGHAR</span>
+            <div class="darshan-stars">★★★★★</div>
+            <div class="darshan-price-row">
+              <span class="darshan-mrp">Rs. 1,300.00</span>
+              <span class="darshan-from-price">From Rs. 940.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4: Rangmahal Shringar Laddu Gopal Dress -->
+        <article class="darshan-card">
+          <div class="darshan-size-bar">
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '3 no')">3 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '4 no')">4 no</button>
+            <button class="size-pill-btn" onclick="selectDarshanSize(this, '5 no')">5 no</button>
+            <button class="size-pill-btn active" onclick="selectDarshanSize(this, '6 no')">6 no</button>
+          </div>
+
+          <button class="btn-darshan-cart" onclick="addDarshanItemToCart('Rangmahal Shringar Laddu Gopal Dress', 1050, 'assets/images/deity-red.png', this)">
+            Add to Cart
+          </button>
+
+          <div class="darshan-media-wrap">
+            <span class="ribbon-badge-top">NEW IN</span>
+            <img src="assets/images/deity-red.png" alt="Kanha Ji wearing Rangmahal Shringar Dress" class="img-kanhaji-deity" />
+            <img src="assets/images/dress-red.png" alt="Rangmahal Shringar Dress Only" class="img-dress-only" />
+            <span class="hover-mode-indicator">Hover: Dress Only View</span>
+          </div>
+
+          <div class="darshan-info">
+            <h3 class="darshan-title" onclick="openProductQuickView('prod-1')">Rangmahal Shringar Laddu Gopal Dress</h3>
+            <span class="darshan-brand">RADHA RANI SHRINGHAR</span>
+            <div class="darshan-stars">★★★★★</div>
+            <div class="darshan-price-row">
+              <span class="darshan-mrp">Rs. 1,500.00</span>
+              <span class="darshan-from-price">From Rs. 1,050.00</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. "BESTSELLERS" PRODUCT SECTION (4 CRISP STUDIO CARDS)
+       ========================================================================= -->
+  <section class="bestsellers-section" id="bestsellers">
+    <div class="container">
+      
+      <div class="section-title-row">
+        <div class="bestseller-header-left">
+          <div class="section-title-left">
+            <svg class="section-icon-flower" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.5 5 6 8.5 6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-10z"/>
+            </svg>
+            <h2 class="section-heading-serif">Bestsellers</h2>
+          </div>
+          <span class="bestseller-subtitle">Loved by devotees, chosen for special moments</span>
+        </div>
+        <a href="#bestsellers" class="section-view-all-link">
+          View All →
+        </a>
+      </div>
+
+      <!-- 4 Bestsellers Grid -->
+      <div class="bestsellers-grid">
+        
+        <!-- Product 1 -->
+        <article class="bestseller-card">
+          <div class="bestseller-media">
+            <img src="assets/images/prod-yellow-poshak.jpg" alt="Yellow Floral Designer Laddu Gopal Poshak" loading="lazy" />
+            <span class="badge-discount">25% OFF</span>
+            <button class="btn-wishlist-heart" onclick="toggleItemWishlist(this, 'Yellow Floral Designer Laddu Gopal Poshak', 599)" title="Save to Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="bestseller-body">
+            <h3 class="bestseller-title" onclick="openProductQuickView('prod-1')">
+              Yellow Floral Designer Laddu Gopal Poshak
+            </h3>
+            <div class="bestseller-price-row">
+              <span class="price-main">₹599</span>
+              <span class="price-old">₹799</span>
+            </div>
+            <button class="btn-card-add-cart" onclick="addItemToCart('Yellow Floral Designer Laddu Gopal Poshak', 599, 'assets/images/prod-yellow-poshak.jpg')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="bestseller-card">
+          <div class="bestseller-media">
+            <img src="assets/images/prod-pink-lehenga.jpg" alt="Pink Pearl Work Radha Rani Lehenga Set" loading="lazy" />
+            <button class="btn-wishlist-heart" onclick="toggleItemWishlist(this, 'Pink Pearl Work Radha Rani Lehenga Set', 1299)" title="Save to Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="bestseller-body">
+            <h3 class="bestseller-title" onclick="openProductQuickView('prod-2')">
+              Pink Pearl Work Radha Rani Lehenga Set
+            </h3>
+            <div class="bestseller-price-row">
+              <span class="price-main">₹1,299</span>
+            </div>
+            <button class="btn-card-add-cart" onclick="addItemToCart('Pink Pearl Work Radha Rani Lehenga Set', 1299, 'assets/images/prod-pink-lehenga.jpg')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="bestseller-card">
+          <div class="bestseller-media">
+            <img src="assets/images/prod-golden-mukut.jpg" alt="Traditional Golden Mukut with Pearls" loading="lazy" />
+            <button class="btn-wishlist-heart" onclick="toggleItemWishlist(this, 'Traditional Golden Mukut with Pearls', 899)" title="Save to Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="bestseller-body">
+            <h3 class="bestseller-title" onclick="openProductQuickView('prod-3')">
+              Traditional Golden Mukut with Pearls
+            </h3>
+            <div class="bestseller-price-row">
+              <span class="price-main">₹899</span>
+              <span class="price-old">₹1,099</span>
+            </div>
+            <button class="btn-card-add-cart" onclick="addItemToCart('Traditional Golden Mukut with Pearls', 899, 'assets/images/prod-golden-mukut.jpg')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="bestseller-card">
+          <div class="bestseller-media">
+            <img src="assets/images/prod-stone-mala.jpg" alt="Multi-colour Stone Mala Set" loading="lazy" />
+            <button class="btn-wishlist-heart" onclick="toggleItemWishlist(this, 'Multi-colour Stone Mala Set', 749)" title="Save to Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="bestseller-body">
+            <h3 class="bestseller-title" onclick="openProductQuickView('prod-4')">
+              Multi-colour Stone Mala Set
+            </h3>
+            <div class="bestseller-price-row">
+              <span class="price-main">₹749</span>
+            </div>
+            <button class="btn-card-add-cart" onclick="addItemToCart('Multi-colour Stone Mala Set', 749, 'assets/images/prod-stone-mala.jpg')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. FESTIVE PROMOTIONAL BANNER (HIGH-RES TEMPLE SANCTUM WITH TEXT & CTA)
+       ========================================================================= -->
+  <section class="festive-promo-section" id="festive">
+    <div class="festive-banner-backdrop">
+      <img src="assets/images/festive-bg.jpg" alt="Festive Sanctuary" class="festive-bg-img" />
+      <div class="festive-gradient-overlay"></div>
+    </div>
+
+    <div class="container festive-content-container">
+      <div class="festive-text-block">
+        <h2 class="festive-title">Make Every Divine Celebration Special</h2>
+        <p class="festive-desc">
+          Explore our festive collection of poshak, shringar sets, mukut and jewellery for all holy occasions.
+        </p>
+        <button class="festive-cta-button" onclick="openSizeGuideModal('gopal')">
+          <span>Shop Festive Collection</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <div class="festive-seal-badge">
+        <div class="seal-inner">
+          <span class="seal-heading">FESTIVE<br>COLLECTION</span>
+          <span class="seal-sub">Special Designs for Special Moments</span>
+          <svg class="seal-lotus" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.5 5 6 8.5 6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-10z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. TRUST STRIP (FOOTER REASSURANCE)
+       ========================================================================= -->
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-strip-grid">
+        
+        <div class="trust-item">
+          <div class="trust-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2C8 6 4 10 4 14a8 8 0 0 0 16 0c0-4-4-8-8-12z"></path>
+            </svg>
+          </div>
+          <span class="trust-title">Beautiful Collections for Every Occasion</span>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polygon points="6 3 18 3 22 9 12 22 2 9 6 3"></polygon>
+            </svg>
+          </div>
+          <span class="trust-title">Premium Quality and Fine Craftsmanship</span>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polyline points="20 12 20 22 4 22 4 12"></polyline>
+              <rect x="2" y="7" width="20" height="5"></rect>
+              <line x1="12" y1="22" x2="12" y2="7"></line>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            </svg>
+          </div>
+          <span class="trust-title">Carefully Packed with Love</span>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <span class="trust-title">Responsive Customer Support</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. SLIDE-OVER CART DRAWER & INTERACTIVE MODALS
+       ========================================================================= -->
+  <div class="drawer-overlay" id="cart-overlay" onclick="closeCartDrawer()"></div>
+  <aside class="drawer-panel" id="cart-panel" aria-label="Shopping Cart">
+    <div class="drawer-header">
+      <h3>Sacred Seva Cart</h3>
+      <button class="btn-close-drawer" onclick="closeCartDrawer()">✕</button>
+    </div>
+
+    <div class="cart-free-gift-bar">
+      <div id="gift-bar-text">Add <strong>₹350</strong> more for Complimentary Vrindavan Chandan & Tulsi Mala!</div>
+      <div class="gift-bar-progress">
+        <div class="gift-bar-fill" id="gift-bar-fill" style="width: 75%;"></div>
+      </div>
+    </div>
+
+    <div class="drawer-body" id="cart-items-list">
+      <!-- Injected by app.js -->
+    </div>
+
+    <div class="drawer-footer">
+      <div class="coupon-row">
+        <input type="text" id="coupon-input" placeholder="Coupon (e.g. VRINDAVAN10)" class="coupon-input" />
+        <button class="btn btn-secondary btn-sm" onclick="applyCouponCode()">Apply</button>
+      </div>
+
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+
+      <div class="cart-subtotal-row" id="cart-discount-row" style="display: none; color: #A83A35;">
+        <span>Seva Discount</span>
+        <span id="cart-discount-val">- ₹0</span>
+      </div>
+
+      <div class="cart-subtotal-row total-bold">
+        <span>Total</span>
+        <span id="cart-total">₹0</span>
+      </div>
+
+      <button class="btn btn-primary btn-block" style="margin-top: 14px;" onclick="openCheckoutModal()">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-backdrop" id="quickview-modal" onclick="if(event.target === this) closeQuickView()">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="closeQuickView()">✕</button>
+      <div class="quickview-body">
+        <div class="quickview-media">
+          <img src="assets/images/prod-yellow-poshak.jpg" alt="Product detail" id="qv-img" class="quickview-main-img" />
+        </div>
+        <div class="quickview-content">
+          <span class="qv-category" id="qv-category">Laddu Gopal Poshak</span>
+          <h2 class="qv-title" id="qv-title">Yellow Floral Designer Laddu Gopal Poshak</h2>
+          <div class="qv-price-row">
+            <span class="qv-price" id="qv-price">₹599</span>
+            <span class="qv-original-price" id="qv-original-price">₹799</span>
+            <span class="qv-stock-badge" id="qv-stock">✓ Ready in Vrindavan Atelier</span>
+          </div>
+          <p class="qv-description" id="qv-desc">
+            Vibrant yellow poshak embellished with silk-thread floral embroidery, gold gota trim, and matching pagdi crown for Thakurji.
+          </p>
+          <div class="qv-specs-list" id="qv-specs"></div>
+          <div class="qv-size-selector">
+            <div class="qv-size-label-row">
+              <span>Select Deity Size:</span>
+              <span class="qv-size-guide-trigger" onclick="closeQuickView(); openSizeGuideModal('gopal');">View Sizing Chart</span>
+            </div>
+            <div class="qv-size-chips" id="qv-size-chips"></div>
+          </div>
+          <div class="qv-actions-row">
+            <button class="btn btn-secondary btn-block" onclick="handleQuickViewAddToCart()">Add to Cart</button>
+            <button class="btn btn-primary btn-block" onclick="handleQuickViewBuyNow()">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Guide Modal -->
+  <div class="modal-backdrop" id="size-guide-modal" onclick="if(event.target === this) closeSizeGuideModal()">
+    <div class="modal-container" style="max-width: 720px; padding: 24px;">
+      <button class="modal-close-btn" onclick="closeSizeGuideModal()">✕</button>
+      <h3 style="color: var(--color-maroon-dark); margin-bottom: 6px;">Laddu Gopal & Radha Rani Size Chart</h3>
+      <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 14px;">
+        Measure deity height from crown to lotus feet to ensure perfect draping.
+      </p>
+      <div class="size-table-responsive" style="max-height: 48vh; overflow-y: auto;">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Deity Size</th>
+              <th>Height (Inches)</th>
+              <th>Poshak Ghera</th>
+              <th>Recommended Pagdi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Size 0</td><td>1.0" – 1.5"</td><td>4.0"</td><td>Miniature Chandrika #0</td></tr>
+            <tr><td>Size 1 & 2</td><td>1.5" – 2.5"</td><td>5.0" – 6.0"</td><td>Size 1/2 Pagdi</td></tr>
+            <tr><td>Size 3 & 4</td><td>2.5" – 3.75"</td><td>7.0" – 8.5"</td><td>Size 3/4 Mukut</td></tr>
+            <tr><td>Size 5 & 6</td><td>3.75" – 5.5"</td><td>10.0" – 12.0"</td><td>Size 5/6 Crown</td></tr>
+            <tr><td>Size 7 & 8</td><td>5.5" – 7.5"+</td><td>14.0" – 16.0"</td><td>Grand Rajbhog Mukut</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 14px; text-align: right;">
+        <button class="btn btn-primary btn-sm" onclick="closeSizeGuideModal()">Close Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-backdrop" id="wishlist-modal" onclick="if(event.target === this) closeWishlistModal()">
+    <div class="modal-container" style="max-width: 680px; padding: 24px;">
+      <button class="modal-close-btn" onclick="closeWishlistModal()">✕</button>
+      <h3 style="color: var(--color-maroon-dark); margin-bottom: 6px;">Devotee Wishlist</h3>
+      <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 14px;">Items saved for upcoming festivals and tithis.</p>
+      <div id="wishlist-items-container"></div>
+    </div>
+  </div>
+
+  <!-- Live Search Modal -->
+  <div class="modal-backdrop" id="search-modal" onclick="if(event.target === this) closeSearchModal()">
+    <div class="modal-container search-modal-container">
+      <button class="modal-close-btn" onclick="closeSearchModal()">✕</button>
+      <div class="search-header-input">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-gold);">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search poshak, jewellery, mukut, mala..." autocomplete="off" />
+      </div>
+      <div class="search-results-list" id="search-results">
+        <p style="font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; padding: 20px 0;">
+          Start typing to explore our Vrindavan shringar inventory...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo Checkout Modal -->
+  <div class="modal-backdrop" id="checkout-modal" onclick="if(event.target === this) closeCheckoutModal()">
+    <div class="modal-container checkout-modal-container">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()" style="top: 12px; right: 12px; color: white; background: rgba(0,0,0,0.3); border: none;">✕</button>
+      <div class="checkout-header">
+        <span class="overline" style="color: var(--color-gold-light);">Temple Delivery</span>
+        <h3>Checkout</h3>
+      </div>
+      <div class="checkout-steps-indicator">
+        <span class="checkout-step-item active" data-step="1">1. Devotee Details</span>
+        <span class="checkout-step-item" data-step="2">2. Payment</span>
+        <span class="checkout-step-item" data-step="3">3. Confirmation</span>
+      </div>
+      <div class="checkout-body">
+        <div class="checkout-step-view" data-step="1">
+          <form onsubmit="event.preventDefault(); setCheckoutStep(2);">
+            <div class="form-group">
+              <label class="form-label">Devotee Full Name *</label>
+              <input type="text" class="form-input" required value="Radhika Sharma" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">WhatsApp Number *</label>
+              <input type="tel" class="form-input" required value="+91 98765 43210" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mandir / Delivery Address *</label>
+              <input type="text" class="form-input" required value="House 42, Krishna Dham, Vrindavan" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 14px;">Continue to Payment →</button>
+          </form>
+        </div>
+        <div class="checkout-step-view" data-step="2" style="display: none;">
+          <h5 style="margin-bottom: 12px; color: var(--color-maroon-dark);">Select Payment Mode:</h5>
+          <div class="payment-options-grid">
+            <div class="payment-option-card selected" onclick="document.querySelectorAll('.payment-option-card').forEach(c=>c.classList.remove('selected')); this.classList.add('selected');">
+              <h6>⚡ Instant UPI / QR</h6>
+              <p>GPay, PhonePe, Paytm</p>
+            </div>
+            <div class="payment-option-card" onclick="document.querySelectorAll('.payment-option-card').forEach(c=>c.classList.remove('selected')); this.classList.add('selected');">
+              <h6>📦 Temple COD</h6>
+              <p>Pay on blessed delivery</p>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="completeOrderPlacement(event)">Bless & Confirm Order</button>
+        </div>
+        <div class="checkout-step-view" data-step="3" style="display: none;">
+          <div class="order-success-screen">
+            <div class="success-icon-wrap">✓</div>
+            <h3 style="color: var(--color-maroon-dark);">Radhey Radhey! Order Confirmed</h3>
+            <div class="order-id-badge">Order ID: <span id="confirmed-order-id">RR-2026-89412</span></div>
+            <p style="font-size: 0.82rem; color: var(--color-text-secondary); margin-bottom: 16px;">
+              Your order has been received with prayers by our Vrindavan atelier.
+            </p>
+            <button class="btn btn-primary" onclick="closeCheckoutModal()">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Presentation Demo Controls -->
+  <div class="demo-toolbar">
+    <span class="demo-badge-text">Demo Mode:</span>
+    <button class="btn-demo-action" onclick="demoPopulateSampleCart()">Load Cart</button>
+    <button class="btn-demo-action" onclick="openSizeGuideModal('gopal')">Size Chart</button>
+    <button class="btn-demo-action" onclick="toggleCurrency('USD')">$ USD</button>
+    <button class="btn-demo-action" onclick="toggleCurrency('INR')">₹ INR</button>
+    <button class="btn-demo-action" onclick="demoResetAll()">Reset</button>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
